@@ -1,0 +1,117 @@
+.navbar {
+  padding: 20px 0px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navbar img {
+  cursor: pointer;
+}
+.navbar .logo {
+  width: 150px;
+}
+.navbar .navbar_menu {
+  display: flex;
+  list-style: none;
+  gap: 25px;
+  color: #49557e;
+  font-size: 18px;
+}
+.signin.dark:hover {
+  color: black !important;
+}
+.navbar .navbar_menu.dark {
+  color: white;
+}
+.navbar .navbar_right {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+.navbar button {
+  background-color: transparent;
+  font-size: 16px;
+  padding: 10px 30px;
+  cursor: pointer;
+  border-radius: 50px;
+  border: 1px solid tomato;
+  color: #49557e;
+}
+.navbar button:hover {
+  background-color: #fff4f2;
+  transition: 0.5s;
+}
+.navbar .active {
+  padding-bottom: 2px;
+  border-bottom: 2px solid #49557e;
+}
+.navbar ul li {
+  cursor: pointer;
+}
+.navbar_search__icon {
+  position: relative;
+}
+.navbar_search__icon .dot {
+  position: absolute;
+  min-width: 10px;
+  min-height: 10px;
+  background-color: tomato;
+  border-radius: 5px;
+  top: -8px;
+  right: -8px;
+}
+.toggle_btn {
+  border: none !important;
+  padding: 0 !important;
+}
+.toggle_btn.black {
+  color: black;
+}
+.toggle_btn.white {
+  color: white;
+}
+.toggle_btn:hover {
+  background-color: transparent !important;
+}
+/* Responsive navbra code */
+@media screen and (max-width: 1050px) {
+  .navbar .logo {
+    width: 140px;
+  }
+  .navbar .navbar_menu {
+    gap: 20px;
+    font-size: 17px;
+  }
+  .navbar .navbar_right {
+    gap: 30px;
+  }
+  .navbar .navbar_right img {
+    width: 22px;
+  }
+  .navbar .navbar_right button {
+    padding: 8px 25px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .navbar .logo {
+    width: 120px;
+  }
+  .navbar .navbar_menu {
+    gap: 15px;
+    font-size: 16px;
+  }
+  .navbar .navbar_right {
+    gap: 20px;
+  }
+  .navbar .navbar_right img {
+    width: 20px;
+  }
+  .navbar .navbar_right button {
+    padding: 7px 20px;
+    font-size: 15px;
+  }
+  .navbar .navbar_menu {
+    display: none;
+  }
+}
+
