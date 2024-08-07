@@ -4,6 +4,7 @@ import "./FoodItem.css";
 import { StoreContext } from "../../Context/StoreContext";
 
 const FoodItem = ({ content }) => {
+  const imageUrl = import.meta.env.VITE_IMAGE_URL;
   const { _id, name, price, image, description } = content;
 
   const { contextValue, theme } = useContext(StoreContext);
@@ -12,7 +13,11 @@ const FoodItem = ({ content }) => {
   return (
     <div className={`food_item ${theme} `}>
       <div className="food_item__container">
-        <img src={image} className="food_item__img" alt={name} />
+        <img
+          src={`${imageUrl}/images/${image}`}
+          className="food_item__img"
+          alt={name}
+        />
         {!cartItems[_id] ? (
           <img
             className="add_icon"

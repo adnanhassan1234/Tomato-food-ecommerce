@@ -3,10 +3,26 @@ import { assets } from "../../assets/frontend_assets/assets";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import { StoreContext } from "../../Context/StoreContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("home");
-  const { theme, toggleTheme } = useContext(StoreContext);
+  const navigate = useNavigate();
+  const { theme, contextValue, toggleTheme } = useContext(StoreContext);
+
+  const { cartItems, token, setToken } = contextValue;
+  const totalItems = Object.values(cartItems).reduce(
+    (sum, item) => sum + item,
+    0
+  );
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    setToken("");
+    navigate("/");
+  };
+
   return (
     <div className="navbar">
       <Link to="/">
@@ -62,15 +78,34 @@ const Navbar = ({ setShowLogin }) => {
         <div className="navbar_search__icon">
           <Link to="/cart">
             <img src={assets.basket_icon} alt="" />
+            {totalItems ? <div className="dot">{totalItems}</div> : null}
           </Link>
-          <div className="dot"></div>
         </div>
-        <button
-          className={`signin ${theme} `}
-          onClick={() => setShowLogin(true)}
-        >
-          Sign in
-        </button>
+        {!token ? (
+          <button
+            className={`signin ${theme} `}
+            onClick={() => setShowLogin(true)}
+          >
+            Sign in
+          </button>
+        ) : (
+          <div className={`navbar_profile ${theme} `}>
+            <img src={assets.profile_icon} alt="" />
+            <ul className="navbar_profile__dropdown">
+              <li>
+                <img src={assets.bag_icon} alt="" />
+                <Link to="/myOrder">
+                  <p>Orders</p>
+                </Link>
+              </li>
+              <hr />
+              <li onClick={logout}>
+                <img src={assets.logout_icon} alt="" />
+                <p>Logout</p>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

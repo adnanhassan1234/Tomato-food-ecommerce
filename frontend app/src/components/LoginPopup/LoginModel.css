@@ -50,6 +50,7 @@
 .login_popup__input input:focus {
   outline: none;
   border-color: #1d2a35;
+  outline: 1px solid #ddd;
 }
 
 .login_popup__input input::placeholder {
